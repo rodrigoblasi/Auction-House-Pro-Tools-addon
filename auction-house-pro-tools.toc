@@ -1,0 +1,7 @@
+## Interface: 110002
+## Title: Auction House Pro Tools
+## Notes: Advanced tools for Auction House power users and goldmakers.
+## Author: Blasi
+## Version: 0.1.0
+
+Core/Init.lua
