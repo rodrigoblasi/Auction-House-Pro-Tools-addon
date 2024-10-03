@@ -4,4 +4,7 @@
 ## Author: Blasi
 ## Version: 0.1.0
 
-Core/Init.lua
+init.lua
+control_panel/init.lua
+module_01/init.lua
+module_02/init.lua
