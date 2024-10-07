@@ -3,8 +3,25 @@
 ## Notes: Advanced tools for Auction House power users and goldmakers.
 ## Author: Blasi
 ## Version: 0.1.0
+## SavedVariables: AuctionHouseProToolsSettings
 
-init.lua
-control_panel/init.lua
-module_01/init.lua
-module_02/init.lua
+
+## Dependencies
+# Libs\LibStub\LibStub.lua
+# Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+# Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+# Libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+
+
+
+
+
+# Core addon files
+Core\init.lua
+Control_panel\init.lua
+# Modules addon files
+# Sales_summary_extended\init.lua
+# Undercut_wars_helper\init.lua
+Log_tester_01\init.lua
+Log_tester_02\init.lua
+
