@@ -206,7 +206,7 @@ local function UpdateIncomingText()
     end
 
     local resultText = soldCount .. " Sold Auctions: " .. GetCoinTextureString(totalIncoming)
-    resultText = resultText .. "    |    " .. postedCount .. " Postedy Auctions: " .. GetCoinTextureString(totalPosted)
+    resultText = resultText .. "    |    " .. postedCount .. " Posted Auctions: " .. GetCoinTextureString(totalPosted)
 
     -- Atualizar a label se a aba de leilões estiver visível
     if incomingText and AuctionHouseFrameAuctionsTab:IsVisible() then

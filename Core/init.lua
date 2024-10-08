@@ -4,7 +4,7 @@ local moduleName = "Core"
 local moduleVersion = "0.1.0"
 local addonName = "Auction House Pro Tools"
 local addonBranch = "development"
-local latestDeploy = "07.10.2024 - 22:12:15"
+local latestDeploy = "07.10.2024 - 22:26:36"
 -- end of default header
 
 --[[ 
