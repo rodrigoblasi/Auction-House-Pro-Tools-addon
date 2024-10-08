@@ -20,8 +20,6 @@
 Core\init.lua
 Control_panel\init.lua
 # Modules addon files
-# Sales_summary_extended\init.lua
-# Undercut_wars_helper\init.lua
-Log_tester_01\init.lua
-Log_tester_02\init.lua
+Sales_summary_extended\init.lua
+Undercut_wars_helper\init.lua
 

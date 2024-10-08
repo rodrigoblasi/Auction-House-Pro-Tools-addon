@@ -4,7 +4,7 @@ local moduleName = "Core"
 local moduleVersion = "0.1.0"
 local addonName = "Auction House Pro Tools"
 local addonBranch = "development"
-local latestDeploy = "07.10.2024 - 00:39:01"
+local latestDeploy = "07.10.2024 - 22:12:15"
 -- end of default header
 
 --[[ 
@@ -12,7 +12,7 @@ local latestDeploy = "07.10.2024 - 00:39:01"
     - Aqui está a lista de todos os módulos que o Core vai gerenciar e liberar para carregamento.
     - O Core vai liberar um por um os módulos listados aqui, garantindo que todos carreguem na ordem correta.
 --]]
-local modulesList = {"LogTester01", "LogTester02"}
+local modulesList = {"SalesSummaryExtended"}
 
 --[[ 
     2. Função de log central
@@ -53,10 +53,8 @@ function InitializeConfig()
     -- Carregando ou configurando os valores padrão
     AuctionHouseProToolsSettings["Core_debug"] = AuctionHouseProToolsSettings["Core_debug"] or false
     AuctionHouseProToolsSettings["ControlPanel_debug"] = AuctionHouseProToolsSettings["ControlPanel_debug"] or false
-    AuctionHouseProToolsSettings["LogTester01_started"] = AuctionHouseProToolsSettings["LogTester01_started"] or false
-    AuctionHouseProToolsSettings["LogTester01_debug"] = AuctionHouseProToolsSettings["LogTester01_debug"] or false
-    AuctionHouseProToolsSettings["LogTester02_started"] = AuctionHouseProToolsSettings["LogTester02_started"] or false
-    AuctionHouseProToolsSettings["LogTester02_debug"] = AuctionHouseProToolsSettings["LogTester02_debug"] or false
+    AuctionHouseProToolsSettings["SalesSummaryExtended_started"] = AuctionHouseProToolsSettings["SalesSummaryExtended_started"] or true
+    AuctionHouseProToolsSettings["SalesSummaryExtended_debug"] = AuctionHouseProToolsSettings["SalesSummaryExtended_debug"] or false
 
     -- Log informando que as configurações foram carregadas ou inicializadas
     AuctionHouseProTools_Log(moduleName, "INFO", "SavedVariables loaded or initialized with default values.")

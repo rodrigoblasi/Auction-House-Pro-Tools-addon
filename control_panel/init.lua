@@ -11,7 +11,7 @@ ControlPanel.isEnabled = false
 ControlPanel.isStarted = false
 ControlPanel.isDebug = false
 local panelFrame -- Referência ao frame visual do painel de controle
-local startedCheckbox, debugCheckbox, startedCheckbox02, debugCheckbox02 -- Variáveis para as checkboxes do painel
+local coreDebugCheckbox, controlPanelDebugCheckbox, startedSalesSummaryCheckbox, debugSalesSummaryCheckbox -- Variáveis para as checkboxes do painel
 
 --[[ 
     2. Função para receber o sinal de habilitação (enabled) do Core 
@@ -103,64 +103,12 @@ function ControlPanel.CreatePanel()
     title:SetPoint("TOP", 0, 0)
     title:SetText("Auction House Pro Tools")
 
-    -- Criar as checkboxes para "started" e "debug" do LogTester01
     local checkboxHeight = 30
     local checkboxSpacing = 40
     local currentY = -50
 
-    -- Checkbox para "started" do LogTester01
-    startedCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
-    startedCheckbox:SetSize(30, 30)
-    startedCheckbox:SetPoint("TOPLEFT", 20, currentY)
-    startedCheckbox.text:SetText("LogTester01 Started")
-    startedCheckbox:SetScript("OnClick", function()
-        if startedCheckbox:GetChecked() then
-            LogTester01.StartModule()
-        else
-            LogTester01.StopModule()
-        end
-        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
-    end)
-
-    -- Checkbox para "debug" do LogTester01
-    currentY = currentY - checkboxSpacing
-    debugCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
-    debugCheckbox:SetSize(30, 30)
-    debugCheckbox:SetPoint("TOPLEFT", 20, currentY)
-    debugCheckbox.text:SetText("LogTester01 Debug")
-    debugCheckbox:SetScript("OnClick", function()
-        LogTester01.ToggleDebug(debugCheckbox:GetChecked())
-        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
-    end)
-
-    -- Checkbox para "started" do LogTester02
-    currentY = currentY - checkboxSpacing
-    startedCheckbox02 = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
-    startedCheckbox02:SetSize(30, 30)
-    startedCheckbox02:SetPoint("TOPLEFT", 20, currentY)
-    startedCheckbox02.text:SetText("LogTester02 Started")
-    startedCheckbox02:SetScript("OnClick", function()
-        if startedCheckbox02:GetChecked() then
-            LogTester02.StartModule()
-        else
-            LogTester02.StopModule()
-        end
-        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
-    end)
-
-    -- Checkbox para "debug" do LogTester02
-    currentY = currentY - checkboxSpacing
-    debugCheckbox02 = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
-    debugCheckbox02:SetSize(30, 30)
-    debugCheckbox02:SetPoint("TOPLEFT", 20, currentY)
-    debugCheckbox02.text:SetText("LogTester02 Debug")
-    debugCheckbox02:SetScript("OnClick", function()
-        LogTester02.ToggleDebug(debugCheckbox02:GetChecked())
-        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
-    end)
-
+    -- Reorganizando a ordem dos checkboxes conforme solicitado
     -- Checkbox para "debug" do Core
-    currentY = currentY - checkboxSpacing
     coreDebugCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
     coreDebugCheckbox:SetSize(30, 30)
     coreDebugCheckbox:SetPoint("TOPLEFT", 20, currentY)
@@ -175,9 +123,35 @@ function ControlPanel.CreatePanel()
     controlPanelDebugCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
     controlPanelDebugCheckbox:SetSize(30, 30)
     controlPanelDebugCheckbox:SetPoint("TOPLEFT", 20, currentY)
-    controlPanelDebugCheckbox.text:SetText("ControlPanel Debug")
+    controlPanelDebugCheckbox.text:SetText("Control Panel Debug")
     controlPanelDebugCheckbox:SetScript("OnClick", function()
         ControlPanel.ToggleDebug(controlPanelDebugCheckbox:GetChecked())
+        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
+    end)
+
+    -- Checkbox para "started" do SalesSummaryExtended
+    currentY = currentY - checkboxSpacing
+    startedSalesSummaryCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
+    startedSalesSummaryCheckbox:SetSize(30, 30)
+    startedSalesSummaryCheckbox:SetPoint("TOPLEFT", 20, currentY)
+    startedSalesSummaryCheckbox.text:SetText("Sales Summary Extended Started")
+    startedSalesSummaryCheckbox:SetScript("OnClick", function()
+        if startedSalesSummaryCheckbox:GetChecked() then
+            SalesSummaryExtended.StartModule()
+        else
+            SalesSummaryExtended.StopModule()
+        end
+        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
+    end)
+
+    -- Checkbox para "debug" do SalesSummaryExtended
+    currentY = currentY - checkboxSpacing
+    debugSalesSummaryCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
+    debugSalesSummaryCheckbox:SetSize(30, 30)
+    debugSalesSummaryCheckbox:SetPoint("TOPLEFT", 20, currentY)
+    debugSalesSummaryCheckbox.text:SetText("Sales Summary Extended Debug")
+    debugSalesSummaryCheckbox:SetScript("OnClick", function()
+        SalesSummaryExtended.ToggleDebug(debugSalesSummaryCheckbox:GetChecked())
         ControlPanel.SaveState()  -- Salvar estado no SavedVariables
     end)
 
@@ -192,18 +166,11 @@ end
     7. Função para atualizar o estado das checkboxes baseado nos estados atuais dos módulos 
 --]]
 function ControlPanel.UpdateCheckboxes()
-    if startedCheckbox and LogTester01 then
-        startedCheckbox:SetChecked(LogTester01.isStarted) -- Refletir o estado started atual
+    if startedSalesSummaryCheckbox and SalesSummaryExtended then
+        startedSalesSummaryCheckbox:SetChecked(SalesSummaryExtended.isStarted) -- Refletir o estado started atual
     end
-    if debugCheckbox and LogTester01 then
-        debugCheckbox:SetChecked(LogTester01.isDebug) -- Refletir o estado debug atual
-    end
-
-    if startedCheckbox02 and LogTester02 then
-        startedCheckbox02:SetChecked(LogTester02.isStarted) -- Refletir o estado started atual
-    end
-    if debugCheckbox02 and LogTester02 then
-        debugCheckbox02:SetChecked(LogTester02.isDebug) -- Refletir o estado debug atual
+    if debugSalesSummaryCheckbox and SalesSummaryExtended then
+        debugSalesSummaryCheckbox:SetChecked(SalesSummaryExtended.isDebug) -- Refletir o estado debug atual
     end
 
     if coreDebugCheckbox then
@@ -219,10 +186,8 @@ end
     8. Função para salvar o estado no SavedVariables
 --]]
 function ControlPanel.SaveState()
-    AuctionHouseProToolsSettings["LogTester01_started"] = LogTester01.isStarted
-    AuctionHouseProToolsSettings["LogTester01_debug"] = LogTester01.isDebug
-    AuctionHouseProToolsSettings["LogTester02_started"] = LogTester02.isStarted
-    AuctionHouseProToolsSettings["LogTester02_debug"] = LogTester02.isDebug
+    AuctionHouseProToolsSettings["SalesSummaryExtended_started"] = SalesSummaryExtended.isStarted
+    AuctionHouseProToolsSettings["SalesSummaryExtended_debug"] = SalesSummaryExtended.isDebug
     AuctionHouseProToolsSettings["Core_debug"] = AuctionHouseProToolsSettings["Core_debug"]
     AuctionHouseProToolsSettings["ControlPanel_debug"] = ControlPanel.isDebug
 end
