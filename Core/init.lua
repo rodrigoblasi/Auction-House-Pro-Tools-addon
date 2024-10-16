@@ -4,7 +4,7 @@ local moduleName = "Core"
 local moduleVersion = "0.1.0"
 local addonName = "Auction House Pro Tools"
 local addonBranch = "development"
-local latestDeploy = "07.10.2024 - 22:26:36"
+local latestDeploy = "08.10.2024 - 12:20:43"
 -- end of default header
 
 --[[ 
@@ -55,6 +55,8 @@ function InitializeConfig()
     AuctionHouseProToolsSettings["ControlPanel_debug"] = AuctionHouseProToolsSettings["ControlPanel_debug"] or false
     AuctionHouseProToolsSettings["SalesSummaryExtended_started"] = AuctionHouseProToolsSettings["SalesSummaryExtended_started"] or true
     AuctionHouseProToolsSettings["SalesSummaryExtended_debug"] = AuctionHouseProToolsSettings["SalesSummaryExtended_debug"] or false
+    AuctionHouseProToolsSettings["UndercutWarsHelper_started"] = AuctionHouseProToolsSettings["UndercutWarsHelper_started"] or true
+    AuctionHouseProToolsSettings["UndercutWarsHelper_debug"] = AuctionHouseProToolsSettings["UndercutWarsHelper_debug"] or true
 
     -- Log informando que as configurações foram carregadas ou inicializadas
     AuctionHouseProTools_Log(moduleName, "INFO", "SavedVariables loaded or initialized with default values.")

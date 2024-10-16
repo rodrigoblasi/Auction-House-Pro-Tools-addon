@@ -22,4 +22,5 @@ Control_panel\init.lua
 # Modules addon files
 Sales_summary_extended\init.lua
 Undercut_wars_helper\init.lua
+Undercut_wars_helper\ui.lua
 

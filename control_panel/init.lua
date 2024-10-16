@@ -11,7 +11,7 @@ ControlPanel.isEnabled = false
 ControlPanel.isStarted = false
 ControlPanel.isDebug = false
 local panelFrame -- Referência ao frame visual do painel de controle
-local coreDebugCheckbox, controlPanelDebugCheckbox, startedSalesSummaryCheckbox, debugSalesSummaryCheckbox -- Variáveis para as checkboxes do painel
+local coreDebugCheckbox, controlPanelDebugCheckbox, startedSalesSummaryCheckbox, debugSalesSummaryCheckbox, startedUndercutWarsHelperCheckbox, debugUndercutWarsHelperCheckbox -- Variáveis para as checkboxes do painel
 
 --[[ 
     2. Função para receber o sinal de habilitação (enabled) do Core 
@@ -155,6 +155,32 @@ function ControlPanel.CreatePanel()
         ControlPanel.SaveState()  -- Salvar estado no SavedVariables
     end)
 
+    -- Checkbox para "started" do Undercut Wars Helper
+    currentY = currentY - checkboxSpacing
+    startedUndercutWarsHelperCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
+    startedUndercutWarsHelperCheckbox:SetSize(30, 30)
+    startedUndercutWarsHelperCheckbox:SetPoint("TOPLEFT", 20, currentY)
+    startedUndercutWarsHelperCheckbox.text:SetText("Undercut Wars Helper Started")
+    startedUndercutWarsHelperCheckbox:SetScript("OnClick", function()
+        if startedUndercutWarsHelperCheckbox:GetChecked() then
+            UndercutWarsHelper.StartModule()
+        else
+            UndercutWarsHelper.StopModule()
+        end
+        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
+    end)
+
+    -- Checkbox para "debug" do Undercut Wars Helper
+    currentY = currentY - checkboxSpacing
+    debugUndercutWarsHelperCheckbox = CreateFrame("CheckButton", nil, panelFrame, "UICheckButtonTemplate")
+    debugUndercutWarsHelperCheckbox:SetSize(30, 30)
+    debugUndercutWarsHelperCheckbox:SetPoint("TOPLEFT", 20, currentY)
+    debugUndercutWarsHelperCheckbox.text:SetText("Undercut Wars Helper Debug")
+    debugUndercutWarsHelperCheckbox:SetScript("OnClick", function()
+        UndercutWarsHelper.ToggleDebug(debugUndercutWarsHelperCheckbox:GetChecked())
+        ControlPanel.SaveState()  -- Salvar estado no SavedVariables
+    end)
+
     -- Ajustar tamanho do frame conforme o conteúdo
     local totalHeight = math.abs(currentY) + checkboxHeight + 50
     panelFrame:SetSize(300, totalHeight)
@@ -173,6 +199,13 @@ function ControlPanel.UpdateCheckboxes()
         debugSalesSummaryCheckbox:SetChecked(SalesSummaryExtended.isDebug) -- Refletir o estado debug atual
     end
 
+    if startedUndercutWarsHelperCheckbox and UndercutWarsHelper then
+        startedUndercutWarsHelperCheckbox:SetChecked(UndercutWarsHelper.isStarted) -- Refletir o estado started atual
+    end
+    if debugUndercutWarsHelperCheckbox and UndercutWarsHelper then
+        debugUndercutWarsHelperCheckbox:SetChecked(UndercutWarsHelper.isDebug) -- Refletir o estado debug atual
+    end
+
     if coreDebugCheckbox then
         coreDebugCheckbox:SetChecked(AuctionHouseProToolsSettings["Core_debug"]) -- Refletir o estado atual de debug do Core
     end
@@ -188,6 +221,8 @@ end
 function ControlPanel.SaveState()
     AuctionHouseProToolsSettings["SalesSummaryExtended_started"] = SalesSummaryExtended.isStarted
     AuctionHouseProToolsSettings["SalesSummaryExtended_debug"] = SalesSummaryExtended.isDebug
+    AuctionHouseProToolsSettings["UndercutWarsHelper_started"] = UndercutWarsHelper.isStarted
+    AuctionHouseProToolsSettings["UndercutWarsHelper_debug"] = UndercutWarsHelper.isDebug
     AuctionHouseProToolsSettings["Core_debug"] = AuctionHouseProToolsSettings["Core_debug"]
     AuctionHouseProToolsSettings["ControlPanel_debug"] = ControlPanel.isDebug
 end
