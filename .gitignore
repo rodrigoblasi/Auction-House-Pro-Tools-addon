@@ -40,4 +40,4 @@ luac.out
 *.hex
 
 # Manually added files
-branch.txt
+dev_notes.md
