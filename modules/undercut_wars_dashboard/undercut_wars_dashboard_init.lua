@@ -1,9 +1,9 @@
 -- DEFAULT HEADER, dont DELETE!
--- FILE PATH: modules/<FILE>.lua
--- MODULE SHORT DESCRIPTION: This module serves as template for bootstrap code
--- MODULE METADATA
-local componentName = "GenericTemplateModuleName"
-local componentExternalName = "Generic Template Module Name"
+--F ILE PATH: Modules/undercut_wars_dashboard/undercut_wars_dashboard_init.lua
+-- MODULE SHORT DESCRIPTION: 
+-- Module METADATA
+local componentName = "undercut_wars_dashboard"
+local componentExternalName = "Undercut Wars Dashboard"
 local componentVersion = "0.0.1"
 local componentType = "module"
 -- Função para registrar os metadados globalmente

@@ -1,9 +1,9 @@
 -- DEFAULT HEADER, dont DELETE!
--- FILE PATH: modules/<FILE>.lua
--- MODULE SHORT DESCRIPTION: This module serves as template for bootstrap code
--- MODULE METADATA
-local componentName = "GenericTemplateModuleName"
-local componentExternalName = "Generic Template Module Name"
+-- FILE PATH: Modules/SalesSummaryExtended/init.lua
+-- MODULE SHORT DESCRIPTION: 
+-- Module METADATA
+local componentName = "SalesSummaryExtended"
+local componentExternalName = "Sales Summary Extended"
 local componentVersion = "0.0.1"
 local componentType = "module"
 -- Função para registrar os metadados globalmente

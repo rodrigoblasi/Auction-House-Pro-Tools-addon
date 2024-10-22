@@ -1,11 +1,11 @@
 -- DEFAULT HEADER, dont DELETE!
--- FILE PATH: modules/<FILE>.lua
--- MODULE SHORT DESCRIPTION: This module serves as template for bootstrap code
--- MODULE METADATA
-local componentName = "GenericTemplateModuleName"
-local componentExternalName = "Generic Template Module Name"
+-- FILE PATH: handlers/<FILE>.lua
+-- SNIPPET SHORT DESCRIPTION: This handler serves as template for bootstrap code
+-- HANDLER METADATA
+local componentName = "GenericTemplateHandlerName"
+local componentExternalName = "Generic Template Handler Name"
 local componentVersion = "0.0.1"
-local componentType = "module"
+local componentType = "handler"
 -- Função para registrar os metadados globalmente
 if not _G[componentName .. "_Metadata"] then
     _G[componentName .. "_Metadata"] = {

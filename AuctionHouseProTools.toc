@@ -1,0 +1,28 @@
+## Interface: 110002
+## Title: Auction House Pro Tools
+## Author: Blasi
+## Version: 0.0.1
+## SavedVariables: ModuleSettings, GlobalAudit
+# Module: Core
+modules\core\core_init.lua
+# modules\core\core_ui.lua
+
+# Snippets
+#snippets\auctionhouse_actions.lua
+#snippets\is_commodity.lua
+snippets\log.lua
+snippets\hello_world.lua
+#snippets\component_global_availability.lua
+
+
+# Handlers
+# handlers\global_audit.lua
+
+# Modules
+# Sales Summary Extended
+#modules\sales_summary_extended\sales_summary_extended_init.lua
+
+# Undercut Wars Dashboard
+#modules\undercut_wars_dashboard\undercut_wars_dashboard_init.lua
+# modules\undercut_wars_dashboard\undercut_wars_dashboard_functions.lua
+# modules\undercut_wars_dashboard\undercut_wars_dashboard_ui.lua
